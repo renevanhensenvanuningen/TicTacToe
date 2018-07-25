@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void buClick(View view) {
         Button buSelected = (Button) view;
-        buSelected.setBackgroundColor(Color.RED);
+
         int AId = 0;
         switch ( buSelected.getId())
         {
@@ -42,9 +42,23 @@ public class MainActivity extends AppCompatActivity {
         }
         PlayGame(buSelected, AId);
     }
+
+    int ActivePlayer = 1;
+
     public void PlayGame(Button b , int id)
     {
+        b.setBackgroundColor(Color.RED);
         Log.d("Tag Player", String.valueOf(id));
         Log.d("Button", b.getText().toString());
+
+        if (ActivePlayer == 1)
+        {
+            b.setText("X");
+        } else
+         {
+            b.setText("O");
+         }
+         if (ActivePlayer == 1) ActivePlayer = 0;
+        else ActivePlayer = 1;
     }
 }
